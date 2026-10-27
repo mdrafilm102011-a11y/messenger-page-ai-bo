@@ -3,7 +3,10 @@ import express from "express";
 
 const app = express();
 app.use(express.json());
-
+app.use((req, res, next) => {
+  console.log("INCOMING:", req.method, req.url);
+  next();
+});
 app.get("/", (req, res) => {
   res.send("Messenger AI Bot is running!");
 });
